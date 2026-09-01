@@ -1,0 +1,769 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Welcome to Alizer | Luxury Cars</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+    overflow:hidden;
+    color:#f7f2e8;
+    background:
+        radial-gradient(circle at 20% 20%,#193653 0%,transparent 35%),
+        radial-gradient(circle at 80% 80%,#b89045 0%,transparent 25%),
+        #07111c;
+}
+
+/* ================= INTRO ================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 40%,#284764 0%,#0b1724 42%,#03070c 100%);
+    transition:1.2s;
+}
+
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-title{
+    position:absolute;
+    top:10%;
+    width:100%;
+    text-align:center;
+    z-index:20;
+}
+
+.intro-title h1{
+    font-size:clamp(35px,6vw,75px);
+    letter-spacing:8px;
+    color:#f5e4bb;
+    text-shadow:0 0 35px #d5ad5c55;
+}
+
+.intro-title p{
+    margin-top:12px;
+    color:#b99a62;
+    letter-spacing:5px;
+    font-size:11px;
+}
+
+/* ================= FLOOR ================= */
+
+.floor{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:38%;
+    background:
+        linear-gradient(#142231,#03070c);
+    border-top:1px solid #caa65b33;
+}
+
+.floor-line{
+    position:absolute;
+    bottom:30%;
+    left:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #d9b866,
+        transparent
+    );
+    box-shadow:0 0 25px #d9b866;
+}
+
+/* ================= 3D BOY ================= */
+
+.man{
+    position:absolute;
+    width:160px;
+    height:310px;
+    left:18%;
+    bottom:29%;
+    z-index:30;
+    animation:walkToCar 4s ease-in-out forwards;
+}
+
+@keyframes walkToCar{
+    0%{
+        transform:translateX(-350px) scale(.8);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    70%{
+        transform:translateX(180px) scale(1);
+    }
+
+    100%{
+        transform:translateX(230px) scale(1);
+    }
+}
+
+.head{
+    position:absolute;
+    top:5px;
+    left:55px;
+    width:55px;
+    height:65px;
+    border-radius:45% 45% 48% 48%;
+    background:linear-gradient(135deg,#dba77b,#8e5435);
+    box-shadow:inset -8px -4px 10px #0004;
+}
+
+.hair{
+    position:absolute;
+    top:-5px;
+    left:4px;
+    width:48px;
+    height:25px;
+    border-radius:50% 50% 20% 20%;
+    background:#17181a;
+}
+
+.neck{
+    position:absolute;
+    top:62px;
+    left:76px;
+    width:17px;
+    height:20px;
+    background:#a96743;
+}
+
+.body3d{
+    position:absolute;
+    top:78px;
+    left:40px;
+    width:90px;
+    height:125px;
+    border-radius:18px 18px 8px 8px;
+    background:
+        linear-gradient(
+            90deg,
+            #151d28,
+            #304258,
+            #111821
+        );
+    box-shadow:
+        15px 10px 25px #0008,
+        inset 5px 0 8px #ffffff18;
+}
+
+.shirt{
+    position:absolute;
+    top:84px;
+    left:76px;
+    width:20px;
+    height:60px;
+    background:#f2eee5;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+}
+
+.tie{
+    position:absolute;
+    top:90px;
+    left:82px;
+    width:10px;
+    height:48px;
+    background:#b99a62;
+    clip-path:polygon(50% 0,100% 20%,70% 100%,30% 100%,0 20%);
+}
+
+.arm{
+    position:absolute;
+    top:90px;
+    width:22px;
+    height:105px;
+    border-radius:15px;
+    background:linear-gradient(90deg,#111923,#3d5062);
+}
+
+.arm.left{
+    left:24px;
+    transform:rotate(10deg);
+}
+
+.arm.right{
+    left:124px;
+    transform:rotate(-18deg);
+}
+
+.hand{
+    position:absolute;
+    width:20px;
+    height:27px;
+    border-radius:50%;
+    background:#b87550;
+}
+
+.hand.left{
+    top:183px;
+    left:12px;
+}
+
+.hand.right{
+    top:182px;
+    left:144px;
+}
+
+.leg{
+    position:absolute;
+    top:190px;
+    width:30px;
+    height:100px;
+    background:linear-gradient(90deg,#10151d,#293848);
+    border-radius:8px;
+}
+
+.leg.left{
+    left:55px;
+}
+
+.leg.right{
+    left:92px;
+}
+
+.shoe{
+    position:absolute;
+    top:282px;
+    width:48px;
+    height:20px;
+    border-radius:15px 5px 5px 5px;
+    background:#080b0f;
+}
+
+.shoe.left{
+    left:42px;
+}
+
+.shoe.right{
+    left:88px;
+}
+
+/* ================= 3D CAR ================= */
+
+.car{
+    position:absolute;
+    width:620px;
+    height:240px;
+    left:48%;
+    bottom:25%;
+    z-index:20;
+    transform:scale(.85);
+    animation:carArrival 5s ease-in-out forwards;
+}
+
+@keyframes carArrival{
+    0%{
+        transform:translateX(600px) scale(.65);
+        opacity:0;
+    }
+
+    35%{
+        opacity:1;
+    }
+
+    70%{
+        transform:translateX(0) scale(.85);
+    }
+
+    100%{
+        transform:translateX(0) scale(.85);
+    }
+}
+
+.car-shadow{
+    position:absolute;
+    left:5%;
+    bottom:5px;
+    width:90%;
+    height:30px;
+    background:#000;
+    filter:blur(15px);
+    border-radius:50%;
+}
+
+.car-body{
+    position:absolute;
+    bottom:40px;
+    left:5%;
+    width:90%;
+    height:100px;
+    border-radius:40px 100px 20px 20px;
+    background:
+        linear-gradient(
+            145deg,
+            #f4e5c1,
+            #c59d58,
+            #566c7e,
+            #172532
+        );
+    border:2px solid #e2c887;
+    box-shadow:
+        inset 0 12px 20px #ffffff30,
+        0 20px 40px #0008;
+}
+
+.car-roof{
+    position:absolute;
+    left:27%;
+    bottom:130px;
+    width:48%;
+    height:75px;
+    border-radius:90px 90px 8px 8px;
+    background:linear-gradient(145deg,#344e63,#07101a);
+    border:2px solid #71889b;
+}
+
+.window{
+    position:absolute;
+    bottom:143px;
+    height:45px;
+    background:linear-gradient(135deg,#819bab,#0b1b28,#02070b);
+    border:1px solid #92a7b7;
+}
+
+.window.one{
+    left:32%;
+    width:20%;
+    transform:skewX(-12deg);
+}
+
+.window.two{
+    left:54%;
+    width:18%;
+    transform:skewX(12deg);
+}
+
+.grille{
+    position:absolute;
+    right:4%;
+    bottom:65px;
+    width:55px;
+    height:60px;
+    border:3px solid #111;
+    border-radius:50%;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #050505 0 5px,
+            #777 6px 8px
+        );
+}
+
+.headlight{
+    position:absolute;
+    right:1%;
+    bottom:112px;
+    width:65px;
+    height:18px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:
+        0 0 15px #fff,
+        0 0 45px #b9e6ff;
+}
+
+.wheel{
+    position:absolute;
+    bottom:5px;
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    border:8px solid #080a0c;
+    background:
+        radial-gradient(
+            circle,
+            #e5e5e5 0 9%,
+            #777 10% 18%,
+            #141414 19% 42%,
+            #030303 43%
+        );
+    animation:spin .7s linear infinite;
+}
+
+.wheel.one{
+    left:14%;
+}
+
+.wheel.two{
+    right:13%;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ================= LOGIN ================= */
+
+#login{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    transition:1s;
+}
+
+#login.show{
+    opacity:1;
+}
+
+.login-box{
+    width:100%;
+    max-width:430px;
+    padding:38px;
+    border:1px solid #d5b66c55;
+    border-radius:25px;
+    background:
+        linear-gradient(
+            145deg,
+            #18293aeF,
+            #07101af2
+        );
+    box-shadow:
+        0 35px 90px #000b,
+        inset 0 1px 0 #ffffff18;
+    backdrop-filter:blur(20px);
+}
+
+.logo{
+    width:72px;
+    height:72px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:20px;
+    background:linear-gradient(135deg,#f1db9c,#a9823d);
+    color:#0a1420;
+    font-size:25px;
+    font-weight:bold;
+    box-shadow:0 10px 35px #c9a45a44;
+}
+
+.login-box h1{
+    text-align:center;
+    margin-top:20px;
+    letter-spacing:5px;
+}
+
+.welcome{
+    text-align:center;
+    margin-top:8px;
+    color:#c9aa6b;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+form{
+    margin-top:30px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    color:#aaa;
+    font-size:13px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border-radius:12px;
+    border:1px solid #ffffff18;
+    outline:none;
+    background:#02070d99;
+    color:white;
+    font-size:15px;
+}
+
+input:focus{
+    border-color:#d3af63;
+    box-shadow:0 0 20px #d3af6322;
+}
+
+.login-btn{
+    width:100%;
+    padding:16px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#e1c078,#9b7532);
+    color:#08111b;
+    font-weight:bold;
+    cursor:pointer;
+    letter-spacing:1px;
+    transition:.3s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 35px #c6a25a44;
+}
+
+.error{
+    display:none;
+    text-align:center;
+    color:#ff8585;
+    font-size:13px;
+    margin-top:15px;
+}
+
+.demo{
+    text-align:center;
+    margin-top:20px;
+    color:#687482;
+    font-size:10px;
+}
+
+@media(max-width:700px){
+
+    .car{
+        left:30%;
+        transform:scale(.55);
+    }
+
+    .man{
+        left:2%;
+        transform:scale(.65);
+    }
+
+    .intro-title h1{
+        font-size:32px;
+    }
+
+    .login-box{
+        padding:28px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= OPENING ================= -->
+
+<div id="intro">
+
+    <div class="intro-title">
+        <h1>WELCOME TO ALIZER</h1>
+        <p>LUXURY AUTOMOTIVE EXPERIENCE</p>
+    </div>
+
+    <div class="floor"></div>
+    <div class="floor-line"></div>
+
+    <!-- 3D BUSINESS MAN -->
+
+    <div class="man">
+
+        <div class="head">
+            <div class="hair"></div>
+        </div>
+
+        <div class="neck"></div>
+
+        <div class="body3d"></div>
+
+        <div class="shirt"></div>
+
+        <div class="tie"></div>
+
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+
+        <div class="hand left"></div>
+        <div class="hand right"></div>
+
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+
+        <div class="shoe left"></div>
+        <div class="shoe right"></div>
+
+    </div>
+
+    <!-- 3D LUXURY CAR -->
+
+    <div class="car">
+
+        <div class="car-shadow"></div>
+
+        <div class="car-roof"></div>
+
+        <div class="window one"></div>
+        <div class="window two"></div>
+
+        <div class="car-body"></div>
+
+        <div class="grille"></div>
+
+        <div class="headlight"></div>
+
+        <div class="wheel one"></div>
+        <div class="wheel two"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= LOGIN ================= -->
+
+<section id="login">
+
+    <div class="login-box">
+
+        <div class="logo">
+            A
+        </div>
+
+        <h1>WELCOME TO ALIZER</h1>
+
+        <div class="welcome">
+            PREMIUM CAR COLLECTION
+        </div>
+
+        <form id="loginForm">
+
+            <label>
+                Username
+            </label>
+
+            <input
+                id="username"
+                type="text"
+                placeholder="Enter username"
+                required
+            >
+
+            <label>
+                Password
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                ENTER ALIZER
+            </button>
+
+        </form>
+
+        <div
+            class="error"
+            id="error"
+        >
+            Incorrect username or password.
+        </div>
+
+        <div class="demo">
+            PRIVATE SHOWROOM • ALIZER AUTOMOTIVE
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+const USERNAME = "Aleezar";
+const PASSWORD = "2127";
+
+
+/* Opening animation */
+
+setTimeout(function(){
+
+    document
+        .getElementById("intro")
+        .classList
+        .add("hide");
+
+    document
+        .getElementById("login")
+        .classList
+        .add("show");
+
+    document.body.style.overflow="auto";
+
+},6500);
+
+
+/* Login */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    const username =
+        document.getElementById("username").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const error =
+        document.getElementById("error");
+
+
+    if(
+        username === USERNAME &&
+        password === PASSWORD
+    ){
+
+        localStorage.setItem(
+            "alizerLoggedIn",
+            "true"
+        );
+
+        window.location.href="home.html";
+
+    }else{
+
+        error.style.display="block";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
